@@ -8,31 +8,65 @@ let stop = 6
 basic.forever(function () {
     if (ir_waarde == achteruit) {
         maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, 60)
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # . # . #
+            . . # . .
+            . . # . .
+            `)
     }
 })
 basic.forever(function () {
     ir_waarde = IR.IR_read()
 })
 basic.forever(function () {
-    if (ir_waarde == links) {
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 33)
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 33)
-        basic.pause(1000)
+    if (ir_waarde == rechts) {
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 60)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 60)
+        basic.showLeds(`
+            . . # . .
+            . . . # .
+            # # # # #
+            . . . # .
+            . . # . .
+            `)
     }
 })
 basic.forever(function () {
-    if (ir_waarde == rechts) {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 33)
-        basic.pause(1000)
+    if (ir_waarde == links) {
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 60)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 60)
+        basic.showLeds(`
+            . . # . .
+            . # . . .
+            # # # # #
+            . # . . .
+            . . # . .
+            `)
     }
 })
 basic.forever(function () {
     if (ir_waarde == vooruit) {
-        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 33)
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 60)
+        basic.showLeds(`
+            . . # . .
+            . . # . .
+            # . # . #
+            . # # # .
+            . . # . .
+            `)
     }
 })
 basic.forever(function () {
     if (ir_waarde == stop) {
         maqueen.motorStop(maqueen.Motors.All)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . # # # .
+            . # # # .
+            . # # # .
+            `)
     }
 })
